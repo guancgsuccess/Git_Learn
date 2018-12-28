@@ -138,3 +138,81 @@ $ git config --global user.email '849962874@qq.com'
 
 git reset HEAD 命令用于取消已缓存的内容。
 
+在test01.txt和test02.txt分别添加内容:
+
+`test01.txt内容`
+
+> test01 head
+
+`test02.txt内容`
+
+> test02 head
+
+现在两个文件修改后，都提交到了缓存区，我们现在要取消其中一个的缓存，操作如下： 
+
+![alt text](imgs/head_reset01.png) 
+
+现在你执行 git commit，只会将 test01.txt文件的改动提交，而 test02.txt 是没有的。
+
+![alt text](imgs/head_reset03.png) 
+
+可以看到test02.txt文件的修改并未提交。
+
+这时我们可以使用以下命令将 test02.txt的修改提交：
+
+![alt text](imgs/head_reset04.png) 
+
+简而言之，执行 git reset HEAD 以取消之前 git add 添加，但不希望包含在下一提交快照中的缓存。
+
+
+
+### 6. git rm
+
+如果只是简单地从工作目录中手工删除文件，运行 git status 时就会在 Changes not staged for commit 的提示。
+
+要从 Git 中移除某个文件，就必须要从已跟踪文件清单中移除，然后提交。可以用以下命令完成此项工作.
+
+~~~
+git rm <file>
+~~~
+
+如果删除之前修改过并且已经放到暂存区域的话，则必须要用强制删除选项 -f
+
+~~~
+git rm -f <file>
+~~~
+
+如果把文件从暂存区域移除，但仍然希望保留在当前工作目录中，换句话说，仅是从跟踪清单中删除，使用 --cached 选项即可
+
+~~~
+git rm --cached <file>
+~~~
+
+可以递归删除，即如果后面跟的是一个目录做为参数，则会递归删除整个目录中的所有子目录和文件：
+
+~~~
+git rm –r * 
+~~~
+
+进入某个目录中，执行此语句，会删除该目录下的所有文件和子目录。
+
+
+
+### 7. git mv
+
+git mv 命令用于移动或重命名一个文件、目录、软连接。
+
+我们先把刚移除的test03 添加回来：
+
+~~~
+$ git add test03
+~~~
+
+然后对其重名:
+
+~~~
+$ git mv test03  t03.md
+$ dir
+t03.md
+~~~
+
