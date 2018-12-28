@@ -34,9 +34,9 @@ git init
 
 ​    接下来用git add命令俩添加这俩个文件:语法:​    
 
-    ~~~
+~~~
 git add filename
-    ~~~
+~~~
 
 或者同时添加多个文件
 
